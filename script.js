@@ -273,5 +273,37 @@ document.querySelectorAll('input, textarea, select').forEach(input => {
 });
 
 
+ // Function to convert resume preview to PDF and download it
+        function downloadPDF() {
+            // Create a new jsPDF instance
+            const doc = new jsPDF();
+
+            // Get the resume preview content and position it in the PDF
+            const resumePreview = document.getElementById("resumePreview");
+            const resumePreviewHeight = resumePreview.offsetHeight;
+            const resumePreviewWidth = resumePreview.offsetWidth;
+
+            // Add resume preview content to the PDF
+            doc.html(resumePreview, {
+                callback: function (doc) {
+                    // Save the PDF
+                    doc.save("resume.pdf");
+                },
+                x: 10,
+                y: 10,
+                html2canvas: {
+                    scale: 0.5, // Adjust scale as needed
+                    width: resumePreviewWidth,
+                    height: resumePreviewHeight
+                }
+            });
+        }
+
+        // Add click event listener to the download PDF button
+        document.getElementById("downloadPDFButton").addEventListener("click", downloadPDF);
+
+
+
+
 // Initialize resume preview
 updateResumePreview();
