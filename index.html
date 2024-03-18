@@ -1,193 +1,187 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>EASYRESUME.AI</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/x-icon" href="apple-touch-icon.png">
-    <style>
-        body {
-            background-image: url(https://images.stockcake.com/public/e/0/6/e06e3e72-8d84-487e-a564-196fb5081987/modern-office-interior-stockcake.jpg);
-            background-attachment: fixed;
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            animation: backgroundanimation 30s linear infinite;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 100px;
-        }
-
-        @keyframes backgroundanimation {
-            0% {
-                background-position: 70% 0%;
-            }
-            50% {
-                background-position: 100% 100%;
-            }
-            100% {
-                background-position: 0% 0%;
-            }
-        }
-
-        .spinner-wrapper {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: transparent;
-            z-index: 999999;
-            display: none; /* Initially hidden */
-        }
-
-        .sk-folding-cube {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 40px;
-            height: 40px;
-            -webkit-transform: rotateZ(45deg);
-            transform: rotateZ(45deg);
-        }
-
-        .sk-folding-cube .sk-cube {
-            float: left;
-            width: 50%;
-            height: 50%;
-            position: relative;
-            transform: scale(1.1);
-        }
-
-        .sk-folding-cube .sk-cube:before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: greenyellow;
-            animation: sk-foldCubeAngle 2.4s infinite linear both;
-            transform-origin: 100% 100%;
-        }
-
-        .sk-folding-cube .sk-cube2 {
-            transform: scale(1.1) rotateZ(90deg);
-        }
-
-        .sk-folding-cube .sk-cube3 {
-            transform: scale(1.1) rotateZ(180deg);
-        }
-
-        .sk-folding-cube .sk-cube4 {
-            transform: scale(1.1) rotateZ(270deg);
-        }
-
-        .sk-folding-cube .sk-cube2:before {
-            animation-delay: 0.3s;
-        }
-
-        .sk-folding-cube .sk-cube3:before {
-            animation-delay: 0.6s;
-        }
-
-        .sk-folding-cube .sk-cube4:before {
-            animation-delay: 0.9s;
-        }
-
-        @keyframes sk-foldCubeAngle {
-            0%, 10% {
-                transform: perspective(140px) rotateX(-180deg);
-                opacity: 0;
-            }
-            25%, 75% {
-                transform: perspective(140px) rotateX(0deg);
-                opacity: 1;
-            }
-            90%, 100% {
-                transform: perspective(140px) rotateY(180deg);
-                opacity: 0;
-            }
-        }
-
-        .message {
-            font-size: 24px;
-            font-weight: bold;
-            animation: slideIn 2s ease-in-out forwards;
-            opacity: 0;
-        }
-
-        @keyframes slideIn {
-            0% {
-                transform: translateY(-100%);
-                opacity: 0;
-            }
-            100% {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
-
-        /* Style for the button */
-        button {
-            padding: 10px 20px;
-            background-color: #4CAF50;
-            border: none;
-            color: white;
-            font-size: 18px;
-            cursor: pointer;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-            margin-top: 20px;
-            text-decoration: none; /* Added */
-        }
-
-        button:hover {
-            background-color: #45a049;
-        }
-    </style>
+    <title>Resume Builder</title>
+    
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-     <div class="message" style="animation-delay: 1s;">Hey there!</div>
-    <div class="message" style="animation-delay: 2s;">Thinking about changing your job?</div>
-    <div class="message" style="animation-delay: 3s;">Don't have time to create a resume?</div>
-    <div class="message" style="animation-delay: 4s;">No worries! Create it on our site!</div>
-    <div class="message" style="animation-delay: 5s;">Click on the button below to get started!</div>
-    <div class="spinner-wrapper">
-        <div class="spinner">
-            <div class="sk-folding-cube">
-                <div class="sk-cube1 sk-cube"></div>
-                <div class="sk-cube2 sk-cube"></div>
-                <div class="sk-cube4 sk-cube"></div>
-                <div class="sk-cube3 sk-cube"></div>
+    <div class="container">
+        <div class="input-section">
+            <h2>Enter Resume Details</h2>
+            <form id="resumeForm">
+                <label for="fullName">Full Name:</label>
+                <input type="text" id="fullName" name="fullName" required><br><br>
+                <label for="location">Location:</label>
+                <input type="text" id="location" name="location" required><br><br>
+                <label for="mobileno">Phone No:</label>
+                <input type="tel" id="mobileno" name="mobileno" required><br><br>
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                <label for="jobType">Select Job Type:</label>
+                <select id="jobType" name="jobType">
+                    <option value="Software Developer">Software Developer</option>
+                    <option value="Data Analyst">Data Analyst</option>
+                    <option value="Marketing Specialist">Marketing Specialist</option>
+                    <option value="Financial Analyst">Financial Analyst</option>
+                </select><br><br>
+                <label for="summary">Professional Summary:</label>
+                <textarea id="summary" name="summary" rows="5" style="width: 100%;"></textarea><br><br>
+                <label for="summaryPreview">Summary Preview:</label>
+                <textarea id="summaryPreview" rows="5" style="width: 100%;"></textarea><br>
+                <br>
+                <label for="skilltype">Select skills:</label>
+                <textarea id="skilltype" rows="5" style="width: 100%;"></textarea><br>
+
+                <!-- Skill buttons -->
+                <div id="skillButtons">
+                    <!-- Button elements will be added dynamically here -->
+                </div>
+              <lable for="work1">Work History</lable><br>
+              <input type="text" id="work1" name="work1" required><br><br>
+              <lable for="company1">company1</lable><br>
+              <input type="text" id="company1" name="company1" required><br>
+              <lable for="startdate">date</lable><br>
+              <input type="text" id="startdate1" name="startdate1" required><br><br>
+              <lable for="work1summary">work1summary</lable><br>
+              <textarea id="work1summary" rows="5" style="width:100%;"></textarea><br>
+              
+           <div id="work2Section" style="display: none;">   
+              <lable for="work2">Work History2</lable><br>
+              <input type="text" id="work2" name="work2" required><br><br>
+              <lable for="company2">company2</lable><br>
+              <input type="text" id="company2" name="company2" required><br>
+              <lable for="startdate2">date</lable><br>
+              <input type="text" id="startdate2" name="startdate2" required><br><br>
+              <lable for="work2summary">work2summary</lable><br>
+              <textarea id="work2summary" rows="5" style="width:100%;"></textarea><br>
+              </div>
+              
+               <!-- Plus Button for Work History 2 -->
+                <button type="button" id="addWork2">EXPERIENCE 2</button>
+              
+            <div id="work3Section" style="display: none;">   
+            <lable for="work3">Work History3</lable><br>
+              <input type="text" id="work3" name="work3" required><br><br>
+              <lable for="company3">company3</lable><br>
+              <input type="text" id="company3" name="company3" required><br>
+              <lable for="startdate">date</lable><br>
+              <input type="text" id="startdate3" name="startdate3" required><br><br>
+              <lable for="work3summary">work3summary</lable><br>
+              <textarea id="work3summary" rows="5" style="width:100%;"></textarea><br>
             </div>
+              
+               <!-- Plus Button for Work History 2 -->
+                <button type="button" id="addWork3">EXPERIENCE 3</button>
+              
+              <div id="work4Section" style="display: none;">
+                
+                <lable for="work4">Work History</lable><br>
+              <input type="text" id="work4" name="work4" required><br><br>
+              <lable for="company4">company4</lable><br>
+              <input type="text" id="company4" name="company4" required><br>
+              <lable for="startdate">date</lable><br>
+              <input type="text" id="startdate4" name="startdate4" required><br><br>
+              <lable for="work4summary">work4summary</lable><br>
+              <textarea id="work4summary" rows="5" style="width:100%;"></textarea><br>
+                    </div>
+               <!-- Plus Button for Work History 2 -->
+                <button type="button" id="addWork4">EXPERIENCE 4</button>
+              
+              
+          
+           
+              <div id="work5Section" style="display: none;">    
+              <lable for="work5">Work History</lable><br>
+              <input type="text" id="work5" name="work1" required><br><br>
+              <lable for="company5">company5</lable><br>
+              <input type="text" id="company5" name="company5" required><br>
+              <lable for="startdate">date</lable><br>
+              <input type="text" id="startdate5" name="startdate5" required><br><br>
+              <lable for="work5summary">work5summary</lable><br>
+              <textarea id="work5summary" rows="5" style="width:100%;"></textarea><br>
+               </div>
+              
+              <button type="button" id="addWork5">EXPERIENCE 5</button>
+              
+            <BR>
+              <BR>
+              
+              <!-- Text area for Awards and Achievements -->
+<label for="awards">Awards and Achievements:</label><br>
+<textarea id="awards" rows="5" style="width:100%;"></textarea><br><br>
+
+  <!-- Text area for projects and internships -->
+<label for="projects">projects and Internships:</label><br>
+<textarea id="projects" rows="5" style="width:100%;"></textarea><br><br>
+             
+              
+              
+              
+<table id="educationTable" style="border-collapse: collapse; width: 100%;">
+    <tr>
+        <td style="border: 1px solid black;" contenteditable="true">Class</td>
+        <td style="border: 1px solid black;" contenteditable="true">College</td>
+        <td style="border: 1px solid black;" contenteditable="true">Board</td>
+        <td style="border: 1px solid black;" contenteditable="true">Year</td>
+        <td style="border: 1px solid black;" contenteditable="true">Position</td>
+    </tr>
+    <tr>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+    </tr>
+  <tr>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+    </tr>
+  <tr>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+    </tr>
+  <tr>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+        <td style="border: 1px solid black;" contenteditable="true"></td>
+    </tr>
+  
+  
+  
+  
+  
+  
+  
+  
+  
+ 
+</table>
+              
+              
+              
+              
+                <button type="submit">Generate Resume</button>
+            </form>
+        </div>
+        <div class="output-section">
+            <div id="resumePreview">
+                <!-- Preview of generated resume will be displayed here -->
+            </div>
+            <button id="downloadPDF">Download PDF</button>
         </div>
     </div>
-    <a href="C:\Users\SHUBA\Desktop\INDEX.HTML\tester\src\index.html"><button id="navigateButton">Let's Get Started</button></a>
 
-    <script>
-        // Function to show the spinner and navigate to another page
-        function navigateToOtherPage() {
-            // Show the spinner
-            document.querySelector('.spinner-wrapper').style.display = 'block';
-
-            // Simulate a page reload with a delay
-            setTimeout(function() {
-                // Navigate to another page
-                window.location.href = 'other_page.html';
-            }, 2000); // Adjust the delay as needed (in milliseconds)
-        }
-
-        // Add click event listener to the navigate button
-        document.getElementById('navigateButton').addEventListener('click', navigateToOtherPage);
-
-        // Animation for message
-        const messages = document.querySelectorAll('.message');
-        messages.forEach((message, index) => {
-            message.style.animationDelay = `${index * 1.5}s`;
-        });
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
