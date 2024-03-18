@@ -273,37 +273,33 @@ document.querySelectorAll('input, textarea, select').forEach(input => {
 });
 
 
- // Function to convert resume preview to PDF and download it
-        function downloadPDF() {
-            // Create a new jsPDF instance
-            const doc = new jsPDF();
-
-            // Get the resume preview content and position it in the PDF
-            const resumePreview = document.getElementById("resumePreview");
-            const resumePreviewHeight = resumePreview.offsetHeight;
-            const resumePreviewWidth = resumePreview.offsetWidth;
-
-            // Add resume preview content to the PDF
-            doc.html(resumePreview, {
-                callback: function (doc) {
-                    // Save the PDF
-                    doc.save("resume.pdf");
-                },
-                x: 10,
-                y: 10,
-                html2canvas: {
-                    scale: 0.5, // Adjust scale as needed
-                    width: resumePreviewWidth,
-                    height: resumePreviewHeight
-                }
-            });
-        }
-
-        // Add click event listener to the download PDF button
-        document.getElementById("downloadPDFButton").addEventListener("click", downloadPDF);
-
 
 
 
 // Initialize resume preview
 updateResumePreview();
+
+// Function to download resume preview as PDF
+function downloadResumePreview() {
+    // Get the resume preview HTML
+    const resumePreview = document.getElementById("ResumePreview");
+
+    // Define options for html2pdf
+    const options = {
+        margin: 10,
+        filename: 'resume_preview.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    // Convert HTML to PDF
+    html2pdf()
+        .from(ResumePreview)                                                                                                                                                                                                                                                                                                                                                        
+        .set(options)
+        .save();
+}
+
+// Add event listener to the download button
+document.getElementById("downloadPDF").addEventListener("click", downloadPDF);
+
